@@ -1,0 +1,39 @@
+---
+
+- name: run ansible settings for virt-install
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  vars:
+    ansible_python_interpreter: /usr/bin/python2.7
+  tags:
+  - ansible
+  tasks:
+  - name: ansible modules
+    yum: name=libvirt-devel state=present
+    with_items:
+    - libvirt-devel
+    - libvirt
+    - virt-install
+    - cockpit
+    - cockpit-system
+    - cockpit-dashboard
+    - cockpit-machines
+
+  - name: start libvirtd
+    service:
+      name: libvirtd
+      state: started
+
+  - name: pip install libvirt-python
+    pip: name=libvirt-python state=present
+
+- name: virt-install vm
+  hosts: all
+  gather_facts: no
+  connection: local
+  tags:
+  - build
+  roles:
+  - {role: 'floppy', tags: ['floppy']}
+  - {role: 'guest', tags: ['guest']}

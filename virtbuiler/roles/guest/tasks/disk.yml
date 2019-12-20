@@ -1,0 +1,9 @@
+---
+
+- name: delete qcow2 disk
+  file:
+    path: "{{ disk_root }}/{{ disk }}"
+    state: absent
+
+- name: create qcow2 disk
+  shell: qemu-img create -f qcow2 {{ disk_root }}/{{ disk }} {{ size }}G

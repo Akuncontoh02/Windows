@@ -1,0 +1,29 @@
+---
+
+- name: get running vm list
+  virt: command=list_vms
+  run_once: yes
+  register: vms
+
+- name: force shutdown vm
+  virt:
+    state: destroyed
+    name: "{{ inventory_hostname }}"
+  when: inventory_hostname in vms.list_vms
+
+- name: undefine vm
+  virt:
+    command: undefine
+    name: "{{ inventory_hostname }}"
+  when: inventory_hostname in vms.list_vms
+
+- name: check ram disk enabled
+  import_tasks: ramdisk.yml
+  when: ramdisk
+
+- name: recreate system disk
+  import_tasks: disk.yml
+  when: boot == 'cdrom'
+
+- name: virt-install start vm
+  shell: virt-install --connect qemu:///system  --hvm --virt-type kvm  --network=default,model=virtio  --noautoconsole  --name {{ inventory_hostname }} --disk path={{ disk_root }}/{{ disk }},size={{ size }},bus=virtio,cache=none  --ram {{ ram }}  --vcpus={{ cpu }}  --vnc --os-type {{ kernel }}  --os-variant {{ distro }}  --disk path={{ floppy }},device=floppy  --cdrom {{ cdrom }} --boot cdrom,hd,menu=on

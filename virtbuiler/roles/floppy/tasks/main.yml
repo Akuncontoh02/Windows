@@ -1,0 +1,58 @@
+---
+
+- name: download virtio drivers floppy disk file
+  run_once: yes
+  uri:
+    url: https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win_amd64.vfd
+    dest: "{{ virtio_floppy }}"
+    creates: "{{ virtio_floppy }}"
+
+- name: make sure umount floppy disk
+  mount:
+    path: "/media/{{ inventory_hostname }}"
+    src: "{{ floppy }}"
+    state: unmounted
+    fstype: vfat
+
+- name: copy vm's floppy disk
+  copy:
+    src: "{{ virtio_floppy }}"
+    dest: "{{ floppy }}"
+
+- name: mkdir for floppy mount
+  file:
+    path: "/media/{{ inventory_hostname }}"
+    state: directory
+
+- name: mount vm's floppy disk for copy files
+  shell: mount {{ floppy }} /media/{{ inventory_hostname }}
+
+- name: copy Autounattend files to floppy disk
+  copy:
+    src: "{{ item }}"
+    dest: "/media/{{ inventory_hostname }}/{{ item }}"
+  with_items:
+  - 7za.exe
+  - ConfigureRemotingForAnsible.ps1
+  - Add_Open_command_window_here_as_administrator.reg
+
+- name: copy Autounattend to floppy disk
+  template:
+    src: "{{ distro }}/{{ item }}"
+    dest: "/media/{{ inventory_hostname }}/{{ item }}"
+  with_items:
+  - Autounattend.xml
+  - Specialize.cmd
+  - OOBE.cmd
+  - Sysprep.cmd
+
+- name: copy Cloudbase-init config to floppy disk
+  template:
+    src: "{{ item }}"
+    dest: "/media/{{ inventory_hostname }}/{{ item }}"
+  with_items:
+  - cloudbase-init.conf
+  - cloudbase-init-unattend.conf
+
+- name: unmount vm's floppy disk
+  shell: umount /media/{{ inventory_hostname }}

@@ -1,0 +1,23 @@
+---
+
+- name: load ram disk module
+  run_once: yes
+  modprobe:
+    name: brd
+    state: present
+    params: 'rd_nr=1 rd_size={{ ramdisk_size }} max_part=0'
+
+- name: mkfs.ext4 on ram disk
+  filesystem:
+    dev: /dev/ram0
+    fstype: ext4
+
+- name: mount ram disk
+  mount:
+    path: "{{ ramdisk_mount }}"
+    src: /dev/ram0
+    state: mounted
+
+- name: set disk root
+  set_fact:
+    disk_root: "{{ ramdisk_mount }}"
