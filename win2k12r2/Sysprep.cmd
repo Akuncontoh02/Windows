@@ -9,8 +9,8 @@ reg ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
 wmic computersystem set AutomaticManagedPagefile=False
 wmic pagefileset set InitialSize=8192,MaximumSize=8192
 
-wget -P C:\ansible https://raw.github.com/cloudbase/unattended-setup-scripts/master/Unattend.xml
-wget -P C:\ansible https://raw.github.com/cloudbase/unattended-setup-scripts/master/UpdateAndSysprep.ps1
+wget --no-check-certificate -P C:\ansible https://raw.github.com/cloudbase/unattended-setup-scripts/master/Unattend.xml
+wget --no-check-certificate -P C:\ansible https://raw.github.com/cloudbase/unattended-setup-scripts/master/UpdateAndSysprep.ps1
 reg add "HKLM\Software\Policies\Microsoft\WindowsStore" /v RemoveWindowsStore /t REG_DWORD /d 1 /f
 reg add "HKLM\Software\Policies\Microsoft\WindowsStore" /v DisableStoreApps /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d 0 /f

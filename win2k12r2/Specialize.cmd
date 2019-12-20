@@ -5,8 +5,8 @@ w32tm.exe /config /syncfromflags:manual /manualpeerlist:"ntp1.aliyun.com ntp2.al
 mkdir C:\ansible
 powershell -command "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force"
 copy A:\7za.exe C:\Windows\System32\7za.exe
-REM powershell Invoke-WebRequest -Uri http://10.144.152.235/nfs/isos/sysprep/wget.exe -OutFile  c:\Windows\System32\wget.exe
-powershell -Command "((New-Object System.Net.Webclient).DownloadFile('http://10.144.152.235/nfs/isos/sysprep/wget.exe', 'C:\Windows\System32\wget.exe'))"
+REM powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/xtha/Windows/master/wget.exe -OutFile  c:\Windows\System32\wget.exe
+powershell -Command "((New-Object System.Net.Webclient).DownloadFile('https://raw.githubusercontent.com/xtha/Windows/master/wget.exe', 'C:\Windows\System32\wget.exe'))"
 
 net user Administrator /active:yes
 net user Administrator /logonpasswordchg:no
