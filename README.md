@@ -18,3 +18,7 @@ https://github.com/Huawei/CloudResetPwdAgent/archive/master.zip
 
 ## virtio driver floppy
 https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win_amd64.vfd
+
+
+## Windows Admin Center
+https://download.microsoft.com/download/1/0/5/1059800B-F375-451C-B37E-758FFC7C8C8B/WindowsAdminCenter1910.msi
