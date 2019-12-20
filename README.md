@@ -15,3 +15,6 @@ virsh undfine
 
 ## CloudResetPwdAgent
 https://github.com/Huawei/CloudResetPwdAgent/archive/master.zip
+
+## virtio floppy
+https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win_amd64.vfd
