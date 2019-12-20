@@ -28,3 +28,6 @@ msiexec /i <WindowsAdminCenterInstallerName>.msi /qn /L*v log.txt SME_PORT=<port
 msiexec /i WAC.msi /qn
 
 https://download.microsoft.com/download/1/0/5/1059800B-F375-451C-B37E-758FFC7C8C8B/WindowsAdminCenter1910.msi
+
+## FreeRDP
+https://www.cloudbase.it/downloads/FreeRDPWebConnect.msi
