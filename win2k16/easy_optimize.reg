@@ -1,0 +1,131 @@
+Windows Registry Editor Version 5.00
+
+; Created by: Shawn Brink
+; http://www.tenforums.com
+; Tutorial: http://www.tenforums.com/tutorials/6942-desktop-icons-add-remove-windows-10-a.html
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"FeatureManagementEnabled"=dword:00000000
+"OemPreInstalledAppsEnabled"=dword:00000000
+"PreInstalledAppsEnabled"=dword:00000000
+"SilentInstalledAppsEnabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
+"{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
+"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+
+
+;01.隐藏搜索按钮
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"SearchboxTaskbarMode"=dword:00000000
+
+;关闭通知中心，系统部署完进桌面在关闭成功率高
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableNotificationCenter"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableLUA"=dword:00000001
+"FilterAdministratorToken"=dword:00000001
+"EnableUIADesktopToggle"=dword:00000001
+"ConsentPromptBehaviorAdmin"=dword:00000000
+"PromptOnSecureDesktop"=dword:00000000
+
+;关闭Windows Defender，反注册掉桌面右键菜单。系统部署完进桌面在关闭成功率高。部署中可能出现卡键盘布局无限重启
+;regsvr32 /s /u "%SystemDrive%\Program Files\Windows Defender\shellext.dll"
+;regsvr32 /s /u "%SystemDrive%\Program Files (x86)\Windows Defender\shellext.dll"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableAntiSpyware"=dword:00000001
+
+;用户帐户控制: 以管理员批准模式运行所有管理员
+;EnableLUA
+;0 = 禁用
+;1（默认值）= 启用
+
+;用户帐户控制: 用于内置管理员帐户的管理员批准模式 
+;EnableLUA EnableUIADesktopToggle FilterAdministratorToken必须为默认值1,ConsentPromptBehaviorAdmin为0
+;FilterAdministratorToken
+;0（默认值）= 禁用
+;1 = 启用
+
+;用户帐户控制: 允许 UIAccess 应用程序在不使用安全桌面的情况下提示提升
+;EnableUIADesktopToggle
+;0（默认值）= 禁用
+;1 = 启用
+
+;用户帐户控制: 管理员批准模式中管理员的提升提示行为
+;ConsentPromptBehaviorAdmin
+;0 = 不提示，直接提升
+;1 = 在安全桌面上提示凭据
+;2 = 在安全桌面上同意提示
+;3 = 提示凭据
+;4 = 同意提示
+;5（默认值）= 非 Windows 二进制文件的同意提示
+
+;用户帐户控制: 提示提升时切换到安全桌面
+;PromptOnSecureDesktop
+;0 = 禁用
+;1（默认值）= 启用
+
+;跳过IE首次运行自定义设置
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+"RunOnceHasShown"=dword:00000001
+"RunOnceComplete"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main]
+"DisableFirstRunCustomize"=dword:00000001
+
+;把IE可同时下载数目增到10
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
+"MaxConnectionsPer1_0Server"=dword:0000000A
+"MaxConnectionsPerServer"=dword:dword:0000000A
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_MAXCONNECTIONSPERSERVER]
+"iexplore.exe"=dword:0000000A
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_MAXCONNECTIONSPER1_0SERVER]
+"iexplore.exe"=dword:0000000A
+
+;IE显示菜单栏
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+"AlwaysShowMenus"=dword:00000001
+;"AlwaysShowMenus"=dword:00000000（为隐藏）
+
+;IE显示收藏夹栏
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\LinksBar]
+"Enabled"=dword:00000001
+
+;屏蔽IE11更新
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Setup\11.0]
+;"DoNotAllowIE11"=dword:00000001
+
+;桌面显示快捷图标
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+;"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000  ;桌面显示计算机
+;"{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000000  ;桌面显示用户
+;"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000000  ;桌面显示网络
+
+;开启记事本的自动换行
+[HKEY_CURRENT_USER\Software\Microsoft\Notepad]
+"fWrap"=dword:00000001
+
+;Windows Media Player设置
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsMediaPlayer]
+;"GroupPrivacyAcceptance"=dword:00000001 ;不显示首次使用对话框
+;"DisableAutoUpdate"=dword:00000001      ;防止WMP自动更新
+;"EnableScreenSaver"=dword:00000001      ;播放WMP时关闭屏保
+;"PreventLibrarySharing"=dword:00000001  ;防止媒体共享
+
+;微软拼音默认为英语输入
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS]
+"Default Mode"=dword:00000001

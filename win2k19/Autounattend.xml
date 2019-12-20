@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+<settings pass="windowsPE">
+    <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-PnpCustomizationsWinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+        <DriverPaths>
+          <PathAndCredentials wcm:action="add" wcm:keyValue="1">
+              <Path>A:\</Path>
+          </PathAndCredentials>
+        </DriverPaths>
+    </component>
+    <component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <SetupUILanguage>
+            <UILanguage>zh-CN</UILanguage>
+        </SetupUILanguage>
+        <!-- English United States-->
+        <InputLocale>0409:00000409</InputLocale>
+        <SystemLocale>zh-CN</SystemLocale>
+        <UILanguage>zh-CN</UILanguage>
+        <UILanguageFallback>en-US</UILanguageFallback>
+        <UserLocale>zh-CN</UserLocale>
+    </component>
+    <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ImageInstall>
+            <OSImage>
+                <InstallFrom>
+                    <MetaData wcm:action="add">
+                        <Key>/image/name</Key>
+                        <Value>Windows Server 2019 SERVERDATACENTER</Value>
+                    </MetaData>
+                </InstallFrom>
+                <InstallTo>
+                    <DiskID>0</DiskID>
+                    <PartitionID>1</PartitionID>
+                </InstallTo>
+                <InstallToAvailablePartition>false</InstallToAvailablePartition>
+            </OSImage>
+        </ImageInstall>
+        <DiskConfiguration>
+            <WillShowUI>OnError</WillShowUI>
+            <Disk wcm:action="add">
+                <CreatePartitions>
+                    <CreatePartition wcm:action="add">
+                        <Order>1</Order>
+                        <Type>Primary</Type>
+                        <Extend>true</Extend>
+                    </CreatePartition>
+                </CreatePartitions>
+                <ModifyPartitions>
+                    <ModifyPartition wcm:action="add">
+                        <Active>true</Active>
+                        <Format>NTFS</Format>
+                        <Label>OS</Label>
+                        <Letter>C</Letter>
+                        <Order>1</Order>
+                        <PartitionID>1</PartitionID>
+                    </ModifyPartition>
+                </ModifyPartitions>
+                <DiskID>0</DiskID>
+                <WillWipeDisk>true</WillWipeDisk>
+            </Disk>
+    </DiskConfiguration>
+    <UserData>
+        <AcceptEula>true</AcceptEula>
+        <FullName></FullName>
+        <Organization></Organization>
+        <ProductKey>
+            <Key>WMDGN-G9PQG-XVVXX-R3X43-63DFG</Key>
+        </ProductKey>
+    </UserData>
+    <EnableFirewall>false</EnableFirewall>
+    </component>
+</settings>
+
+<settings pass="offlineServicing">
+    <component name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <EnableLUA>false</EnableLUA>
+    </component>
+    <component name="Microsoft-Windows-PnpCustomizationsNonWinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="NonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <DriverPaths>
+            <PathAndCredentials wcm:action="add" wcm:keyValue="1">
+                <Path>A:\</Path>
+            </PathAndCredentials>
+        </DriverPaths>
+    </component>
+</settings>
+
+<settings pass="generalize">
+    <component name="Microsoft-Windows-Security-SPP" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <SkipRearm>1</SkipRearm>
+    </component>
+</settings>
+
+<settings pass="specialize">
+    <component name="Microsoft-Windows-TerminalServices-LocalSessionManager" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <fDenyTSConnections>false</fDenyTSConnections>
+    </component>
+    <component name="Microsoft-Windows-TerminalServices-RDP-WinStationExtensions" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <UserAuthentication>1</UserAuthentication>
+    </component>
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" language="neutral" name="Microsoft-Windows-ServerManager-SvrMgrNc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" versionScope="nonSxS">
+            <DoNotOpenServerManagerAtLogon>true</DoNotOpenServerManagerAtLogon>
+        </component>
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" language="neutral" name="Microsoft-Windows-IE-ESC" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" versionScope="nonSxS">
+            <IEHardenAdmin>false</IEHardenAdmin>
+            <IEHardenUser>false</IEHardenUser>
+        </component>
+        <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" language="neutral" name="Microsoft-Windows-IE-InternetExplorer" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" versionScope="nonSxS">
+        <AllSitesCompatibilityMode>true</AllSitesCompatibilityMode>
+        <BlockPopups>no</BlockPopups>
+        <FilterLevel>Low</FilterLevel>
+        <SuggestedSitesEnabled>false</SuggestedSitesEnabled>
+            <SearchScopes>
+                <Scope wcm:action="add">
+                    <ScopeDefault>true</ScopeDefault>
+                    <ScopeDisplayName>Google</ScopeDisplayName>
+                    <ScopeKey>Google</ScopeKey>
+                    <ScopeUrl>http://www.google.com/search?q={searchTerms}</ScopeUrl>
+                </Scope>
+            </SearchScopes>
+            <DisableAccelerators>true</DisableAccelerators>
+            <DisableFirstRunWizard>true</DisableFirstRunWizard>
+            <Home_Page>about:blank</Home_Page>
+        </component>
+    <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <InputLocale>0409:00000409</InputLocale>
+        <SystemLocale>zh-CN</SystemLocale>
+        <UILanguage>zh-CN</UILanguage>
+        <UILanguageFallback>en-US</UILanguageFallback>
+        <UserLocale>zh-CN</UserLocale>
+    </component>
+    <component name="Networking-MPSSVC-Svc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <DomainProfile_EnableFirewall>false</DomainProfile_EnableFirewall>
+        <PrivateProfile_EnableFirewall>false</PrivateProfile_EnableFirewall>
+        <PublicProfile_EnableFirewall>false</PublicProfile_EnableFirewall>
+    </component>
+    <component name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <SkipAutoActivation>true</SkipAutoActivation>
+    </component>
+    <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <RunSynchronous>
+        <!-- Download and install various utilities -->
+            <RunSynchronousCommand wcm:action="add">
+                <Order>1</Order>
+                <Path>cmd.exe /C A:\Specialize.cmd</Path>
+                <Description>Execute tools Specialize pass script</Description>
+            </RunSynchronousCommand>
+        </RunSynchronous>
+    </component>
+    <component name="Microsoft-Windows-SQMApi" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <CEIPEnabled>0</CEIPEnabled>
+    </component>
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ComputerName>*</ComputerName>
+        <ProductKey>WMDGN-G9PQG-XVVXX-R3X43-63DFG</ProductKey>
+        <DesktopOptimization>
+            <ShowWindowsStoreAppsOnTaskbar>false</ShowWindowsStoreAppsOnTaskbar>
+            <GoToDesktopOnSignIn>true</GoToDesktopOnSignIn>
+        </DesktopOptimization>
+        <WindowsFeatures>
+            <ShowWindowsMail>false</ShowWindowsMail>
+        </WindowsFeatures>
+        <BluetoothTaskbarIconEnabled>false</BluetoothTaskbarIconEnabled>
+        <CopyProfile>false</CopyProfile>
+        <DoNotCleanTaskBar>true</DoNotCleanTaskBar>
+        <EnableStartMenu>true</EnableStartMenu>
+        <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
+    </component>
+</settings>
+
+<settings pass="oobeSystem">
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <OOBE>
+        <HideEULAPage>true</HideEULAPage>
+        <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+        <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+        <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+        <NetworkLocation>Work</NetworkLocation>
+        <SkipUserOOBE>true</SkipUserOOBE>
+        <SkipMachineOOBE>true</SkipMachineOOBE>
+        <ProtectYourPC>1</ProtectYourPC>
+    </OOBE>
+    <AutoLogon>
+        <Password>
+            <Value>PIdvyIs2jWLgjDjqVUL8</Value>
+            <PlainText>true</PlainText>
+        </Password>
+        <Enabled>true</Enabled>
+        <LogonCount>5</LogonCount>
+        <Username>Administrator</Username>
+    </AutoLogon>
+    <UserAccounts>
+        <AdministratorPassword>
+            <Value>PIdvyIs2jWLgjDjqVUL8</Value>
+            <PlainText>true</PlainText>
+        </AdministratorPassword>
+        <LocalAccounts>
+            <LocalAccount wcm:action="add">
+                <Password>
+                    <Value>rNeFf20qKj2HbLVtJNu0</Value>
+                    <PlainText>true</PlainText>
+                </Password>
+                <Description></Description>
+                <DisplayName></DisplayName>
+                <Group>Administrators</Group>
+                <Name>ansible</Name>
+            </LocalAccount>
+        </LocalAccounts>
+    </UserAccounts>
+    <RegisteredOrganization></RegisteredOrganization>
+    <RegisteredOwner></RegisteredOwner>
+    <DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
+    <FirstLogonCommands>
+        <SynchronousCommand wcm:action="add">
+            <Description>OOBE Script</Description>
+            <Order>1</Order>
+            <CommandLine>A:\OOBE.cmd</CommandLine>
+            <RequiresUserInput>false</RequiresUserInput>
+        </SynchronousCommand>
+    </FirstLogonCommands>
+    <TimeZone>Chinese Standard Time</TimeZone>
+</component>
+</settings>
+</unattend>
