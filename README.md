@@ -23,4 +23,6 @@ https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/v
 ## Windows Admin Center
 choco install windows-admin-center -y
 
+msiexec /i <WindowsAdminCenterInstallerName>.msi /qn /L*v log.txt SME_PORT=<port> SSL_CERTIFICATE_OPTION=generate
+
 https://download.microsoft.com/download/1/0/5/1059800B-F375-451C-B37E-758FFC7C8C8B/WindowsAdminCenter1910.msi
