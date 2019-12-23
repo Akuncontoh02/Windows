@@ -1,3 +1,5 @@
+@echo off
+
 REM  ignore error continue: cmd.exe /C
 tzutil.exe /s "China Standard Time"
 w32tm.exe /config /syncfromflags:manual /manualpeerlist:"ntp1.aliyun.com ntp2.aliyun.com"

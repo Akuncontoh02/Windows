@@ -141,7 +141,7 @@
         <!-- Download and install various utilities -->
             <RunSynchronousCommand wcm:action="add">
                 <Order>1</Order>
-                <Path>cmd.exe /C A:\Specialize.cmd</Path>
+                <Path>cmd.exe /C A:\Specialize.cmd >> C:\Specialize.log</Path>
                 <Description>Execute tools Specialize pass script</Description>
             </RunSynchronousCommand>
         </RunSynchronous>
@@ -213,7 +213,7 @@
         <SynchronousCommand wcm:action="add">
             <Description>OOBE Script</Description>
             <Order>1</Order>
-            <CommandLine>cmd.exe /C A:\OOBE.cmd</CommandLine>
+            <CommandLine>A:\OOBE.cmd >> C:\OOBE.log</CommandLine>
             <RequiresUserInput>false</RequiresUserInput>
         </SynchronousCommand>
     </FirstLogonCommands>

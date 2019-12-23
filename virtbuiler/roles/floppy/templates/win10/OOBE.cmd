@@ -1,3 +1,5 @@
+@echo off
+
 cscript //B C:\Windows\System32\slmgr.vbs /ipk {{ product_key }}
 cscript //B C:\Windows\System32\slmgr.vbs /skms {{ kms_host }}
 cscript //B C:\Windows\System32\slmgr.vbs /ato
