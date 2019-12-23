@@ -40,7 +40,7 @@
   template:
     src: "{{ distro }}/{{ item }}"
     dest: "/media/{{ inventory_hostname }}/{{ item }}"
-    newline_sequence: \r\n
+    newline_sequence: '\r\n'
   with_items:
   - Autounattend.xml
   - Specialize.cmd
@@ -51,7 +51,7 @@
   template:
     src: "{{ item }}"
     dest: "/media/{{ inventory_hostname }}/{{ item }}"
-    newline_sequence: \r\n
+    newline_sequence: '\r\n'
   with_items:
   - cloudbase-init.conf
   - cloudbase-init-unattend.conf
